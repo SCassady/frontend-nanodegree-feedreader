@@ -98,13 +98,9 @@ $(function() {
         * @description Loads first feed if possible.
         */
         beforeEach(function(done){
-            try{
-                loadFeed(0, function() {
-                    done();
-                });
-            } catch(e) {
-                console.log(e.name + ' ' + e.message);
-            }
+            loadFeed(0, function() {
+                done();
+            });
         });
 
         /*
