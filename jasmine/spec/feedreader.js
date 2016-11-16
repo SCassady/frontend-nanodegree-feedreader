@@ -7,7 +7,7 @@
  */
 
 
-/* 
+/*
 * We're placing all of our tests within the $() function,
 * since some of these tests may require DOM elements. We want
 * to ensure they don't run until the DOM is ready.
@@ -35,10 +35,7 @@ $(function() {
         * and that the URL is not empty.
         */
         it('all have nonempty names', function() {
-            for(var i = 0; i< allFeeds.length; i++) {
-                expect(i).toBeGreaterThan(-1);
-                expect(i).toBeLessThan(allFeeds.length);
-
+            for (var i = 0; i< allFeeds.length; i++) {
                 expect(allFeeds[i].name).toBeDefined();
                 expect(allFeeds[i].name).not.toBe("");
             }
@@ -50,10 +47,7 @@ $(function() {
         * and that the name is not empty.
         */
         it('all have nonempty urls', function() {
-            for(var i = 0; i< allFeeds.length; i++) {
-                expect(i).toBeGreaterThan(-1);
-                expect(i).toBeLessThan(allFeeds.length);
-
+            for (var i = 0; i< allFeeds.length; i++) {
                 expect(allFeeds[i].url).toBeDefined();
                 expect(allFeeds[i].url).not.toBe("");
             }
@@ -70,7 +64,7 @@ $(function() {
         * hidden by default.
         */
         it('hidden by default', function() {
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
 
         /*
@@ -79,10 +73,10 @@ $(function() {
         */
         it('toggles visibility on icon click', function() {
             $('.menu-icon-link').trigger("click");
-            expect($('body').hasClass('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBeFalsy();
 
             $('.menu-icon-link').trigger("click");
-            expect($('body').hasClass('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBeTruthy();
         });
     });
 
@@ -98,18 +92,14 @@ $(function() {
         * @description Loads first feed if possible.
         */
         beforeEach(function(done){
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         /*
         * @description Ensures loaded feed is defined and nonempty.
         */
-        it('at least one exists after loadFeed', function(done) {
-            expect($('.feed')).toBeDefined();
-            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
-            done();
+        it('at least one exists after loadFeed', function() {
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
@@ -124,9 +114,7 @@ $(function() {
         * @description Loads first feed.
         */
         beforeEach(function(done){
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done);
         });
 
         /*
@@ -134,15 +122,12 @@ $(function() {
         * a new feed and ensure it's defined and different than the first.
         */
         it('new feed selected', function(done) {
-            var firstFeed = $('.feed');
-            expect(firstFeed).toBeDefined();
+            var firstFeed = $('.feed').html();
 
             loadFeed(1, function() {
+                expect($('.feed').html()).not.toBe(firstFeed);
                 done();
             });
-
-            expect($('.feed')).toBeDefined();
-            expect($('.feed')).not.toBe(firstFeed);
         });
     });
 }());
