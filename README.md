@@ -7,7 +7,7 @@ Included is an RSS feedreader for the Udacity blog and 4 specs of Jasmine 2.2 te
 
 Simply download this repository, and open index.html in a web browser to run the tests.
 
-## Note:
+## Tests:
 
 The tests are located in the "jasmine/spec/feedreader.js" file.
 
