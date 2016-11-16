@@ -1,7 +1,7 @@
 Feedreader Jasmine Tests
 ===============================
 
-Included is a RSS feedreader for the Udacity blog and 4 specs of Jasmine 2.2 tests, forked from the Udacity Front-End Nanodegree project 10. 
+Included is an RSS feedreader for the Udacity blog and 4 specs of Jasmine 2.2 tests, forked from the Udacity Front-End Nanodegree project 10. 
 
 ## 1.) Installation and use:
 
